@@ -1,0 +1,126 @@
+/*
+ * Central Element 
+ */
+#central_element {
+    border: solid grey 2px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin: 30px auto;
+    text-align: center;
+    width: 800px;
+}
+
+/*
+ * Header Styles
+ */
+#invoice_header {
+    height: 160px;
+    width: 800px;
+}
+
+#invoice_header #logo {
+    height: 65px;
+    width: 400px;
+}
+
+#invoice_header #invoice_image_area {
+    height: 75px;
+    padding: 10px 10px 0px 10px;
+    text-align: left;
+    width: 800px;
+}
+
+#invoice_header #invoice_text_area {
+    height: 80px;
+    padding: 0px 10px 10px 15px;
+    text-align: left;
+    width: 800px;
+}
+
+#invoice_header #invoice_text_area #company_name {
+    padding-bottom: 15px;
+}
+
+#invoice_header #invoice_text_area #company_details td {
+    width: 220px;
+}
+
+/*
+ * Customer Information
+ */
+#customer_and_order_information {
+    height: 125px;
+    padding: 10px 10px 10px 10px;
+    text-align: left;
+    width: 800px;
+}
+
+#customer_and_order_information #customer_info {
+    float: left;
+    width: 400px;
+}
+
+#customer_and_order_information #order_info {
+    float: right;
+    width: 400px;
+}
+
+/*
+ * Order Details
+ */
+#order_details {
+    padding: 10px 10px 10px 10px;
+    text-align: left;
+    width: 800px;
+}
+
+#order_details_table {
+    border-collapse: collapse;
+}
+
+#order_details_table td,
+#order_details_table th {
+    padding: 5px;
+}
+
+#order_details_table .requested_service_column {
+    width: 501px;
+}
+#order_details_table .hours_column {
+    width: 60px;
+}
+#order_details_table .hour_rate_column {
+    width: 100px;
+}
+#order_details_table .cost_column {
+    width: 80px;
+}
+#order_details_table .odd {
+    background-color: white;
+}
+#order_details_table .even {
+    background-color: #cbdaf1;
+}
+#order_details_table .align_dollars {
+    padding-right: 10px;
+    text-align: right;
+}
+
+
+/*
+ * Message Centre
+ */
+#message_content {
+    padding: 10px 10px 10px 10px;
+    text-align: left;
+    width: 800px;
+}
+
+/*
+ * Thank You
+ */
+#thank_you {
+    height: 20px;
+    font-style: italic;
+    width: 800px;
+}

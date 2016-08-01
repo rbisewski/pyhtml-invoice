@@ -12,7 +12,7 @@ import time
 
 # Global definitions for the Company sending the invoice.
 doc_title              = "Customer Invoice"
-company_logo_img       = "logo.png"
+company_logo_img       = "invoice_logo.png"
 company_name           = "XYZ Corporation"
 company_street_address = "456 Generic Lane"
 company_state_country  = "City, State, Country"

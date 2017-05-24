@@ -27,7 +27,7 @@ client_postal          = "ABC 123"
 client_account         = "00000000000"
 
 # Global definitions for the current order being processed.
-order_date             = "August 1, 2016"
+order_date             = "June 1, 2017"
 order_method           = "Electronic Deposit"
 
 # Global list of goods or services being purchased; defined as follows:
@@ -485,7 +485,7 @@ def main():
     if (len(order_number) < 1):
 
         # If it did not, then this program needs to end.
-        print "Error: Unable to generate order number!\n"
+        print("Error: Unable to generate order number!\n")
         return 1
 
     # Assemble the order information section of the invoice.

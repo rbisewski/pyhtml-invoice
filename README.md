@@ -1,4 +1,4 @@
-# pyhtml-invoice - 
+# pyhtml-invoice - straightforward HTML invoice generator written in Python.
 
 This is a straightforward HTML invoice generator written in Python. One of
 the advantages over other methods is that the end-user can redirect the

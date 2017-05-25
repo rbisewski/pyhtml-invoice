@@ -9,6 +9,7 @@
 
 # Necessary imports
 import time
+from pycss import generate_stylesheet
 
 # Global definitions for the Company sending the invoice.
 doc_title              = "Customer Invoice"
@@ -103,7 +104,7 @@ def assemble_head_section(document_title):
     head_html += "        <meta name=\"keywords\" content=\"invoice template\" />\n"
     head_html += "        <meta name=\"robots\" content=\"index,follow\" />\n" 
     head_html += "        <meta name=\"author\" content=\"John Smith\" />\n" 
-    head_html += "        <link rel=\"stylesheet\" href=\"invoice.css\" >\n" 
+    head_html += generate_stylesheet()
     head_html += "        <title>" + document_title + "</title>\n" 
     head_html += "    </head>\n"
 

@@ -4,15 +4,12 @@
 # 
 # Description: A simple python script designed to assemble CSS.
 # 
-# Author: Robert Bisewski <contact@ibiscybernetics.com>
-# 
 
 #
 # Function to generate the style element contents.
 #
 def generate_stylesheet():
 
-    # String to hold the css values.
     css = "    <style>\n"
 
     # Central element styles
@@ -152,8 +149,6 @@ def generate_stylesheet():
     css += "        width: 800px;\n"
     css += "    }\n"
 
-    # End the style tag.
     css += "    </style>\n"
 
-    # Return the completed CSS string
     return css

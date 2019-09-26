@@ -40,7 +40,7 @@ To send an email, call the client of your choice via commandline:
     sendmail customer@domain.com < `python generate_invoice.py`
 
 
-# Authors
+# Author
 
 This was developed by Robert Bisewski at Ibis Cybernetics. For more
 information, contact:

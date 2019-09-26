@@ -6,7 +6,9 @@
 # 
 
 # Necessary imports
+import getopt
 import time
+import sys
 from pycss import generate_stylesheet
 
 # Global definitions for the Company sending the invoice.
@@ -182,19 +184,19 @@ def assemble_invoice_client_information_section(name, street_address, state_coun
     client_section_html += "                         <!-- City, Province/State, Country -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>&nbsp;</td>\n"
-    client_section_html += "			     <td>" + state_country + "</td>\n"
+    client_section_html += "                             <td>" + state_country + "</td>\n"
     client_section_html += "                         </tr>\n"
    
     client_section_html += "                         <!-- Postal Code -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>&nbsp;</td>\n"
-    client_section_html += "			     <td>" + postal + "</td>\n"
+    client_section_html += "                             <td>" + postal + "</td>\n"
     client_section_html += "                         </tr>\n"
     
     client_section_html += "                         <!-- Account Number is just a number -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>Account Number:</td>\n"
-    client_section_html += "			      <td>" + account + "</td>\n"
+    client_section_html += "                             <td>" + account + "</td>\n"
     client_section_html += "                         </tr>\n"
     client_section_html += "                     </table>\n"
     client_section_html += "                 </div>\n"
@@ -404,6 +406,37 @@ def assemble_invoice_order_details_section(details_array, taxable_rate):
 #
 def main():
 
+    argv = sys.argv[1:]
+
+    usage = 'generate_invoice.py -d <date> -o <file>\nWhere date is like... "June 15, 2019"\n'
+
+    order_date = 'June 15, 2019'
+    output = '/tmp/biz_invoice.html'
+
+    try:
+        opts, args = getopt.getopt(argv,"hd:o:",["date=","output="])
+    except getopt.GetoptError:
+        print(usage)
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print(usage)
+            sys.exit()
+        elif opt in ("-d", "--date"):
+            order_date = arg
+        elif opt in ("-o", "--output"):
+            output = arg
+
+    if (order_date == ''):
+        print("Please enter a valid datetime.\n")
+        print(usage)
+        sys.exit(1)
+
+    if (output == ''):
+        print("Please enter a valid output file name.\n")
+        print(usage)
+        sys.exit(1)
+
     html = ""
 
     html += "<!DOCTYPE html>\n"
@@ -487,7 +520,11 @@ def main():
      
     html += "</html>\n"
      
-    print (html)
+    f = open(output,"w")
+    f.write(html)
+    f.close()
+    print("Writting output file to: " + output)
+
     return 0
 
 ######

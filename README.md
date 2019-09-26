@@ -17,7 +17,7 @@ Specifically, the following packages are required:
 
 # Installation
 
-Dump generate_invoice.py at the location your typical python scripts.
+Install generate_invoice.py at the location your typical python scripts.
 
 Afterwards, adjust the details and to match your company and client so that
 the HTML generated resembles what orders you need to place / deliver.
@@ -31,13 +31,20 @@ have to edit pycss.py if the styles need to be adjusted.
 Simply execute the script and redirect the contents to the intended
 destination (e.g. HTML file or email).
 
-To make an HTML file:
+To make an HTML invoice file:
 
-    python generate_invoice.py > biz_invoice.html
+```bash
+python generate_invoice.py -d "June 15, 2019" -o /path/to/biz_invoice.html
+```
 
-To send an email, call the client of your choice via commandline:
+Where `-d` is the datetime and `-o` is the filename you wish to save it to.
 
-    sendmail customer@domain.com < `python generate_invoice.py`
+To send an email of the invoice, attach the file using an email client of
+your choice:
+
+```bash
+sendmail customer@domain.com < /path/to/biz_invoice.py
+```
 
 
 # Author

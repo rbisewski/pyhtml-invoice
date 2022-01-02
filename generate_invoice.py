@@ -28,7 +28,7 @@ client_postal          = "ABC 123"
 client_account         = "00000000000"
 
 # Global definitions for the current order being processed.
-order_date             = "June 1, 2017"
+order_date             = "December 31, 2021"
 order_method           = "Electronic Deposit"
 
 # Global list of goods or services being purchased; defined as follows:
@@ -523,7 +523,7 @@ def main():
     f = open(output,"w")
     f.write(html)
     f.close()
-    print("Writting output file to: " + output)
+    print("Writing output file to: " + output)
 
     return 0
 

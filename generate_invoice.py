@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-# 
+#
 # Generate Invoice Script
-# 
+#
 # Description: A small python script designed to print out HTML invoices.
-# 
+#
 
 # Necessary imports
 import getopt
@@ -45,17 +45,17 @@ order_details_array = [
 taxable_rate = 0.12
 
 # Global definition for the invoice-specific notes.
-notes  = "" 
-notes += "Your request has been delivered as-is electronically. " 
-notes += "For more information regarding this or other orders, " 
-notes += "consider contacting XYZ Corporation via email " 
-notes += "at email@address.xyz or by phone at " 
-notes += "000-000-0000 for order assistance." 
+notes  = ""
+notes += "Your request has been delivered as-is electronically. "
+notes += "For more information regarding this or other orders, "
+notes += "consider contacting XYZ Corporation via email "
+notes += "at email@address.xyz or by phone at "
+notes += "000-000-0000 for order assistance."
 
 # Global defintion of the final thank you
 thank_you  = ""
-thank_you += "Thank you for choosing XYZ Corporation, we look " 
-thank_you += "forward to working with you again." 
+thank_you += "Thank you for choosing XYZ Corporation, we look "
+thank_you += "forward to working with you again."
 
 #
 # Function to generate the specific order number.
@@ -77,7 +77,7 @@ def generate_order_number():
     # If the second element is only one digit, add an extra zero.
     if (len(parts[1]) == 1):
         return parts[0] + "" + parts[1] + "0"
-    
+
     # If the second element is two digits, append the two parts together.
     if (len(parts[1]) == 2):
         return parts[0] + parts[1]
@@ -93,15 +93,15 @@ def assemble_head_section(document_title):
 
     head_html = ""
 
-    head_html += "    <!-- Head -->\n" 
-    head_html += "    <head>\n" 
-    head_html += "        <meta charset=\"utf-8\" />\n" 
-    head_html += "        <meta name=\"description\" content=\"Customer Invoice\" />\n" 
+    head_html += "    <!-- Head -->\n"
+    head_html += "    <head>\n"
+    head_html += "        <meta charset=\"utf-8\" />\n"
+    head_html += "        <meta name=\"description\" content=\"Customer Invoice\" />\n"
     head_html += "        <meta name=\"keywords\" content=\"invoice template\" />\n"
-    head_html += "        <meta name=\"robots\" content=\"index,follow\" />\n" 
-    head_html += "        <meta name=\"author\" content=\"John Smith\" />\n" 
+    head_html += "        <meta name=\"robots\" content=\"index,follow\" />\n"
+    head_html += "        <meta name=\"author\" content=\"John Smith\" />\n"
     head_html += generate_stylesheet()
-    head_html += "        <title>" + document_title + "</title>\n" 
+    head_html += "        <title>" + document_title + "</title>\n"
     head_html += "    </head>\n"
 
     return head_html
@@ -113,15 +113,15 @@ def assemble_invoice_header_section(logo_img, name, street_address, email, state
 
     header_section_html  = ""
 
-    header_section_html += "             <!-- Document Header -->\n" 
-    header_section_html += "             <div id=\"invoice_header\">\n" 
+    header_section_html += "             <!-- Document Header -->\n"
+    header_section_html += "             <div id=\"invoice_header\">\n"
     header_section_html += "                 <div id=\"invoice_image_area\">\n"
     header_section_html += "                     <img id=\"logo\" src=\"" + logo_img + "\" alt=\"" + name + "\" />\n"
     header_section_html += "                 </div>\n"
     header_section_html += "                 <div id=\"invoice_text_area\">\n"
-    header_section_html += "                     <div id=\"company_name\">\n" 
+    header_section_html += "                     <div id=\"company_name\">\n"
     header_section_html += "                     " + name + "\n"
-    header_section_html += "                     </div>\n" 
+    header_section_html += "                     </div>\n"
     header_section_html += "                     <table id=\"company_details\">\n"
     header_section_html += "                         <tr>\n"
     header_section_html += "                             <td>\n"
@@ -129,13 +129,13 @@ def assemble_invoice_header_section(logo_img, name, street_address, email, state
     header_section_html += "                             </td>\n"
     header_section_html += "                             <td>\n"
     header_section_html += "                               " + email + "\n"
-    header_section_html += "                             </td>\n" 
-    header_section_html += "                         </tr>\n" 
-    header_section_html += "                         <tr>\n" 
-    header_section_html += "                             <td>\n" 
-    header_section_html += "                               " + state_country + "\n" 
-    header_section_html += "                             </td>\n" 
-    header_section_html += "                             <td>\n" 
+    header_section_html += "                             </td>\n"
+    header_section_html += "                         </tr>\n"
+    header_section_html += "                         <tr>\n"
+    header_section_html += "                             <td>\n"
+    header_section_html += "                               " + state_country + "\n"
+    header_section_html += "                             </td>\n"
+    header_section_html += "                             <td>\n"
     header_section_html += "                               " + phone + "\n"
     header_section_html += "                             </td>\n"
     header_section_html += "                         </tr>\n"
@@ -157,42 +157,42 @@ def assemble_invoice_client_information_section(name, street_address, state_coun
     client_section_html += "                     <table>\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <th>\n"
-    client_section_html += "                               Customer Information\n" 
-    client_section_html += "                             </th>\n" 
+    client_section_html += "                               Customer Information\n"
+    client_section_html += "                             </th>\n"
     client_section_html += "                             <th>\n"
     client_section_html += "                             </th>\n"
     client_section_html += "                         </tr>\n"
-    
+
     client_section_html += "                         <!-- Buffer -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>&nbsp;</td>\n"
     client_section_html += "                             <td>&nbsp;</td>\n"
     client_section_html += "                         </tr>\n"
-   
+
     client_section_html += "                         <!-- Client Name -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>Name:</td>\n"
     client_section_html += "                             <td>" + name + "</td>\n"
     client_section_html += "                         </tr>\n"
-    
+
     client_section_html += "                         <!-- Street Address -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>Address:</td>\n"
     client_section_html += "                             <td>" + street_address + "</td>\n"
     client_section_html += "                         </tr>\n"
-    
+
     client_section_html += "                         <!-- City, Province/State, Country -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>&nbsp;</td>\n"
     client_section_html += "                             <td>" + state_country + "</td>\n"
     client_section_html += "                         </tr>\n"
-   
+
     client_section_html += "                         <!-- Postal Code -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>&nbsp;</td>\n"
     client_section_html += "                             <td>" + postal + "</td>\n"
     client_section_html += "                         </tr>\n"
-    
+
     client_section_html += "                         <!-- Account Number is just a number -->\n"
     client_section_html += "                         <tr>\n"
     client_section_html += "                             <td>Account Number:</td>\n"
@@ -209,7 +209,7 @@ def assemble_invoice_client_information_section(name, street_address, state_coun
 def assemble_invoice_order_information_section(number, date, method):
 
     order_info_section_html = ""
- 
+
     order_info_section_html += "                 <!-- Order Information -->\n"
     order_info_section_html += "                 <div id=\"order_info\">\n"
     order_info_section_html += "                     <table>\n"
@@ -218,26 +218,26 @@ def assemble_invoice_order_information_section(number, date, method):
     order_info_section_html += "                               Order Information\n"
     order_info_section_html += "                             </th>\n"
     order_info_section_html += "                             <th>&nbsp;</th>\n"
-    order_info_section_html += "                         </tr>\n" 
-    
+    order_info_section_html += "                         </tr>\n"
+
     order_info_section_html += "                         <!-- Buffer -->\n"
-    order_info_section_html += "                         <tr>\n" 
+    order_info_section_html += "                         <tr>\n"
     order_info_section_html += "                             <td>&nbsp;</td>\n"
     order_info_section_html += "                             <td>&nbsp;</td>\n"
     order_info_section_html += "                         </tr>\n"
-    
+
     order_info_section_html += "                         <!-- Order Number is timestamp -->\n"
     order_info_section_html += "                         <tr>\n"
     order_info_section_html += "                             <td>Number:</td>\n"
     order_info_section_html += "                             <td>" + str(number) + "</td>\n"
     order_info_section_html += "                         </tr>\n"
-    
+
     order_info_section_html += "                         <!-- Order Date -->\n"
     order_info_section_html += "                         <tr>\n"
     order_info_section_html += "                             <td>Date:</td>\n"
     order_info_section_html += "                             <td>" + date + "</td>\n"
     order_info_section_html += "                         </tr>\n"
-    
+
     order_info_section_html += "                         <!-- Order Payment Method -->\n"
     order_info_section_html += "                         <tr>\n"
     order_info_section_html += "                             <td>Method:</td>\n"
@@ -251,7 +251,7 @@ def assemble_invoice_order_information_section(number, date, method):
 #
 # Function to assemble the order details section of the invoice.
 #
-def assemble_invoice_order_details_section(details_array, taxable_rate):
+def assemble_invoice_order_details_section(details_array, taxable_rate, taxes):
 
     num_of_orders              = len(details_array)
     current_num                = 0
@@ -273,18 +273,18 @@ def assemble_invoice_order_details_section(details_array, taxable_rate):
     order_details_section_html += "                         </th>\n"
     order_details_section_html += "                         <th class=\"cost_column\">\n"
     order_details_section_html += "                             Amount\n"
-    order_details_section_html += "                         </th>\n" 
-    order_details_section_html += "                     </tr>\n" 
+    order_details_section_html += "                         </th>\n"
+    order_details_section_html += "                     </tr>\n"
     order_details_section_html += "                     <tr class=\"odd\">\n"
-    order_details_section_html += "                         <td>&nbsp;</td>\n" 
-    order_details_section_html += "                         <td>&nbsp;</td>\n" 
-    order_details_section_html += "                         <td>&nbsp;</td>\n" 
-    order_details_section_html += "                         <td>&nbsp;</td>\n" 
-    order_details_section_html += "                     </tr>\n" 
-   
+    order_details_section_html += "                         <td>&nbsp;</td>\n"
+    order_details_section_html += "                         <td>&nbsp;</td>\n"
+    order_details_section_html += "                         <td>&nbsp;</td>\n"
+    order_details_section_html += "                         <td>&nbsp;</td>\n"
+    order_details_section_html += "                     </tr>\n"
+
     # Generate the HTML table tags for each of the orders.
     for current_num in range (0, num_of_orders):
- 
+
         # Sanity check, ensure this is an actual entry, otherwise skip
         if (details_array[current_num] is None):
             continue
@@ -298,7 +298,7 @@ def assemble_invoice_order_details_section(details_array, taxable_rate):
             current_type = "even"
         else:
             current_type = "odd"
-        
+
         # Calculate the cost of a given service.
         cost = details_array[current_num][1] * details_array[current_num][2]
         invoice_cost_summary += cost
@@ -314,11 +314,11 @@ def assemble_invoice_order_details_section(details_array, taxable_rate):
         order_details_section_html += "                         <td>$" + hourly_rate + " / hour</td>\n"
         order_details_section_html += "                         <td class=\"align_dollars\">$" + cost + "</td>\n"
         order_details_section_html += "                     </tr>\n"
-    
+
     # Generate the HTML <tr> buffers to make the page standard height.
     if (num_of_orders < 7):
 
-        # Go ahead and cycle based on how much more space we need. 
+        # Go ahead and cycle based on how much more space we need.
         for x in range (0, 7 - num_of_orders):
 
             # Stagger the <tr> css styles to produce a line-by-line effect
@@ -334,67 +334,73 @@ def assemble_invoice_order_details_section(details_array, taxable_rate):
             order_details_section_html += "                         <td>&nbsp;</td>\n"
             order_details_section_html += "                         <td>&nbsp;</td>\n"
             order_details_section_html += "                         <td>&nbsp;</td>\n"
-            order_details_section_html += "                     </tr>\n" 
-    
+            order_details_section_html += "                     </tr>\n"
+
     # If the previous entry was "even" make sure we have an "odd" separator
     # to improve page appearance.
     if (current_type == "even"):
         order_details_section_html += "                     <!-- Buffer Separator -->\n"
         order_details_section_html += "                     <tr class=\"odd\">\n"
-        order_details_section_html += "                         <td>&nbsp;</td>\n" 
-        order_details_section_html += "                         <td>&nbsp;</td>\n" 
-        order_details_section_html += "                         <td>&nbsp;</td>\n" 
-        order_details_section_html += "                         <td>&nbsp;</td>\n" 
+        order_details_section_html += "                         <td>&nbsp;</td>\n"
+        order_details_section_html += "                         <td>&nbsp;</td>\n"
+        order_details_section_html += "                         <td>&nbsp;</td>\n"
+        order_details_section_html += "                         <td>&nbsp;</td>\n"
         order_details_section_html += "                     </tr>\n"
 
-    order_details_section_html += "                     <!-- Cost Summary Before Tax -->\n"
-    order_details_section_html += "                     <tr class=\"odd\">\n"
-    order_details_section_html += "                         <th>\n"
-    order_details_section_html += "                             &nbsp;\n" 
-    order_details_section_html += "                         </th>\n" 
-    order_details_section_html += "                         <th>\n" 
-    order_details_section_html += "                             &nbsp;\n"
-    order_details_section_html += "                         </th>\n"
-    order_details_section_html += "                         <th>\n"
-    order_details_section_html += "                            Summary\n"
-    order_details_section_html += "                         </th>\n" 
-    order_details_section_html += "                         <th class=\"align_dollars\">\n" 
-    order_details_section_html += "                            $"
-    order_details_section_html += ("{:.2f}".format(invoice_cost_summary)) + "\n" 
-    order_details_section_html += "                         </th>\n" 
-    order_details_section_html += "                     </tr>\n"
- 
-    order_details_section_html += "                     <!-- Taxes -->\n"
-    order_details_section_html += "                     <tr class=\"odd\">\n"
-    order_details_section_html += "                         <th>\n"
-    order_details_section_html += "                             &nbsp;\n"
-    order_details_section_html += "                         </th>\n"
-    order_details_section_html += "                         <th>\n"
-    order_details_section_html += "                             &nbsp;\n"
-    order_details_section_html += "                         </th>\n"
-    order_details_section_html += "                         <th>\n"
-    order_details_section_html += "                            Tax\n" 
-    order_details_section_html += "                         </th>\n"
-    order_details_section_html += "                         <th class=\"align_dollars\">\n"
-    order_details_section_html += "                            $"
-    order_details_section_html += ("{:.2f}".format(invoice_cost_summary * taxable_rate)) + "\n" 
-    order_details_section_html += "                         </th>\n"
-    order_details_section_html += "                     </tr>\n"
-   
+    if (taxes):
+        order_details_section_html += "                     <!-- Cost Summary Before Tax -->\n"
+        order_details_section_html += "                     <tr class=\"odd\">\n"
+        order_details_section_html += "                         <th>\n"
+        order_details_section_html += "                             &nbsp;\n"
+        order_details_section_html += "                         </th>\n"
+        order_details_section_html += "                         <th>\n"
+        order_details_section_html += "                             &nbsp;\n"
+        order_details_section_html += "                         </th>\n"
+        order_details_section_html += "                         <th>\n"
+        order_details_section_html += "                            Summary\n"
+        order_details_section_html += "                         </th>\n"
+        order_details_section_html += "                         <th class=\"align_dollars\">\n"
+        order_details_section_html += "                            $"
+        order_details_section_html += ("{:.2f}".format(invoice_cost_summary)) + "\n"
+        order_details_section_html += "                         </th>\n"
+        order_details_section_html += "                     </tr>\n"
+
+        order_details_section_html += "                     <!-- Taxes -->\n"
+        order_details_section_html += "                     <tr class=\"odd\">\n"
+        order_details_section_html += "                         <th>\n"
+        order_details_section_html += "                             &nbsp;\n"
+        order_details_section_html += "                         </th>\n"
+        order_details_section_html += "                         <th>\n"
+        order_details_section_html += "                             &nbsp;\n"
+        order_details_section_html += "                         </th>\n"
+        order_details_section_html += "                         <th>\n"
+        order_details_section_html += "                            Tax\n"
+        order_details_section_html += "                         </th>\n"
+        order_details_section_html += "                         <th class=\"align_dollars\">\n"
+        order_details_section_html += "                            $"
+        order_details_section_html += ("{:.2f}".format(invoice_cost_summary * taxable_rate)) + "\n"
+        order_details_section_html += "                         </th>\n"
+        order_details_section_html += "                     </tr>\n"
+
     order_details_section_html += "                     <!-- Total -->\n"
-    order_details_section_html += "                     <tr class=\"odd\">\n" 
+    order_details_section_html += "                     <tr class=\"odd\">\n"
     order_details_section_html += "                         <th>\n"
-    order_details_section_html += "                             &nbsp;\n" 
+    order_details_section_html += "                             &nbsp;\n"
     order_details_section_html += "                         </th>\n"
     order_details_section_html += "                         <th>\n"
     order_details_section_html += "                             &nbsp;\n"
-    order_details_section_html += "                         </th>\n" 
-    order_details_section_html += "                         <th>\n" 
+    order_details_section_html += "                         </th>\n"
+    order_details_section_html += "                         <th>\n"
     order_details_section_html += "                            Total\n"
     order_details_section_html += "                         </th>\n"
     order_details_section_html += "                         <th class=\"align_dollars\">\n"
     order_details_section_html += "                            $"
-    order_details_section_html += ("{:.2f}".format(invoice_cost_summary * (1 + taxable_rate))) + "\n" 
+
+    if (taxes):
+        order_details_section_html += ("{:.2f}".format(invoice_cost_summary * (1 + taxable_rate))) + "\n"
+    else:
+        order_details_section_html += ("{:.2f}".format(invoice_cost_summary)) + "\n"
+
     order_details_section_html += "                         </th>\n"
     order_details_section_html += "                     </tr>\n"
     order_details_section_html += "                 </table>\n"
@@ -408,13 +414,17 @@ def main():
 
     argv = sys.argv[1:]
 
-    usage = 'generate_invoice.py -d <date> -o <file>\nWhere date is like... "June 15, 2019"\n'
+    usage = "generate_invoice.py -n -d <date> -o <file>\n"
+    usage += "-n    No Taxes   (optional) Do not calculate taxes\n"
+    usage += "-d    Date       e.g. December 31, 2021\n"
+    usage += "-o    Output     e.g. /tmp/sample_invoice.html\n"
 
-    order_date = 'June 15, 2019'
-    output = '/tmp/biz_invoice.html'
+    order_date = 'December 31, 2021'
+    output = '/tmp/sample_invoice.html'
+    taxes = True
 
     try:
-        opts, args = getopt.getopt(argv,"hd:o:",["date=","output="])
+        opts, args = getopt.getopt(argv,"hd:o:n:",["date=","output="])
     except getopt.GetoptError:
         print(usage)
         sys.exit(2)
@@ -422,6 +432,8 @@ def main():
         if opt == '-h':
             print(usage)
             sys.exit()
+        elif opt in ("-n", "--no-taxes"):
+            taxes = False
         elif opt in ("-d", "--date"):
             order_date = arg
         elif opt in ("-o", "--output"):
@@ -441,12 +453,12 @@ def main():
 
     html += "<!DOCTYPE html>\n"
     html += "<html lang=\"en\">\n"
-     
+
     html += assemble_head_section(doc_title)
- 
+
     html += "    <body>\n"
     html += "        <div id=\"central_element\">\n"
-    
+
     # Assemble the header of the invoice, with company logo and information.
     html += assemble_invoice_header_section(company_logo_img,
                                             company_name,
@@ -456,12 +468,12 @@ def main():
                                             company_phone)
 
     html += "             <hr />\n"
-    
+
     # Assemble the customer information section.
     html += "             <!-- Customer & Order Information Section -->\n"
     html += "             <div id=\"customer_and_order_information\">\n"
-   
-    # Assemble the client information section of the invoice. 
+
+    # Assemble the client information section of the invoice.
     html += assemble_invoice_client_information_section(client_name,
                                                         client_street_address,
                                                         client_state_country,
@@ -481,17 +493,18 @@ def main():
 
     # Close the client / order info section.
     html += "             </div>\n"
-    
+
     html += "             <hr />\n"
-    
+
     html += "             <!-- Order Details Section -->\n"
     html += "             <div id=\"order_details\">\n"
     html += assemble_invoice_order_details_section(order_details_array,
-                                                   taxable_rate)
+                                                   taxable_rate,
+                                                   taxes)
     html += "             </div>\n"
-    
+
     html += "             <hr />\n"
-    
+
     html += "             <!-- Additional message content -->\n"
     html += "             <div id=\"message_content\">\n"
     html += "                 <table>\n"
@@ -505,21 +518,21 @@ def main():
     html += "                     </tr>\n"
     html += "                 </table>\n"
     html += "             </div>\n"
-    
+
     html += "             <hr />\n"
-    
+
     html += "             <!-- Thank you message -->\n"
     html += "             <div id=\"thank_you\">\n"
     html += "                 <strong>\n"
     html += "                   " + thank_you + "\n"
-    html += "                 </strong>\n" 
+    html += "                 </strong>\n"
     html += "             </div>\n"
-    
+
     html += "        </div>\n"
     html += "    </body>\n"
-     
+
     html += "</html>\n"
-     
+
     f = open(output,"w")
     f.write(html)
     f.close()
